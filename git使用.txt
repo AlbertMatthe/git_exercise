@@ -1,0 +1,77 @@
+git常用命令
+Cd 某个目录		到达填写的文件夹根目录
+
+各种指令加上 -help 显示可选择的填写方式
+
+确定作者和邮箱：
+	git config --global user.name "Albert_Matthe" 	确认作者
+	git config --global user.email 760800177@qq.com 确认邮箱
+
+本地仓库：
+	创建一个新仓库
+	选择一个建立好的文件加，打开bash，并输入git -init
+	或者：
+	打开bash
+	cd D:/SomethingWorks 
+	git -init
+
+库的状态
+	git status
+
+缓存区：
+	git add 某个文件
+	git add -A	提交当前目录下的所有内容
+	usage: git add [<options>] [--] <pathspec>...
+
+		-n, --dry-run         dry run
+		-v, --verbose         be verbose
+
+		-i, --interactive     interactive picking
+		-p, --patch           select hunks interactively
+		-e, --edit            edit current diff and apply
+		-f, --force           allow adding otherwise ignored files
+		-u, --update          update tracked files
+		-N, --intent-to-add   record only the fact that the path will be added later
+		-A, --all             add changes from all tracked and untracked files
+
+修改内容提交
+	git commit 
+	Commit contents options
+		-a, --all             commit all changed files  				提交所有改变的文件
+		-i, --include         add specified files to index for commit 	向提交的索引添加特定的文件
+		--interactive         interactively add files					
+		-p, --patch           interactively add changes
+		-o, --only            commit only specified files				只提交特定的文件
+		-n, --no-verify       bypass pre-commit and commit-msg hooks	忽略预提交和提交信息
+
+远端仓库：
+	链接远端仓库
+	usage: git remote add [<options>] <name> <url>
+							下列选项	在github获得的ssh/http链接
+		-f, --fetch           fetch the remote branches
+		--tags                import all tags and associated objects when fetching
+							  or do not fetch any tag at all (--no-tags)
+		-t, --track <branch>  branch(es) to track	下载分支
+		-m, --master <branch>
+							  master branch			下载主分支
+		
+
+	上传至远程仓库
+	usage: git push [<options>] [<repository> [<refspec>...]]
+					选项		仓库名			分支名
+
+	克隆仓库
+	usage: git clone [<options>] [--] <repo> [<dir>]
+					选项			在github获得的ssh/http链接
+					 
+	从服务器上拉去代码 -git pull
+	usage: git pull [<options>] [<repository> [<refspec>...]]
+					选项		仓库名		    分支名
+					
+创建分支：
+	git branch
+切换分支
+	git checkout
+合并分支
+	git merge
+	

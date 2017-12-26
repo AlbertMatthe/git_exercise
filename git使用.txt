@@ -17,7 +17,10 @@ Cd 某个目录		到达填写的文件夹根目录
 
 库的状态
 	git status
-
+查看目前为止的commit id
+	git log
+查看每一次命令
+	git reflog
 缓存区：
 	git add 某个文件
 	git add -A	提交当前目录下的所有内容
@@ -67,7 +70,9 @@ Cd 某个目录		到达填写的文件夹根目录
 	从服务器上拉去代码 -git pull
 	usage: git pull [<options>] [<repository> [<refspec>...]]
 					选项		仓库名		    分支名
-					
+
+版本返回：
+	git reset
 创建分支：
 	git branch
 切换分支

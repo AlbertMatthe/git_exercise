@@ -1,0 +1,106 @@
+oracle数据库的很多内容是以表格位基础的，比如用户权限，还有系统内存设置等。连用户使用的默认表空间都是记录在表中的。感觉有一种一切皆为表的感觉。
+
+oracle数据库的表是跟着用户走的。一个链接代表就是一个数据库，一个数据库下有多个用户，一个用户下有多个表。
+表是用来存储用户数据的。
+模式对象是用户模式中的数据对象
+一、属于关联数据库
+二、函数依赖
+在关系模式r（u）中，xy属于u，两个相同的x值对应的y值相同。
+、三范式
+1nf：实体属性不可再分
+2nf：在1nf的基础上，每个非主属性完全函数依赖于候选键
+3nf：在2nf的基础上，关系模式中的每个非主属性对任何候选键都不存在传递依赖。
+1nf的实现：使讲属性拆分到不可再分
+2nf的实现：将表的属性拆分，使得可以达成完全函数依赖
+3nf的实现：将表拆分
+三、用户
+解锁用户
+alter user scott account unlock;
+
+设置用户口令
+alter user scott identified by root;
+
+注：scott是oracle创始人，tiger是他的猫
+
+四、逻辑存储结构
+数据库由表空间、段、区、数据块组成
+五、SQL Plus 使用
+sql plus中可以执行的3种命令：sql语句、pl/sql语句和sql plus内部命令
+
+sql中的命令链接于断开数据库
+connect 用户/口令
+disconnec 断开链接
+
+describe 查看表结构
+describe {[schema.]objet [@connect_identifier]}
+schema:指定对象所属的用户名，或者所属的用户模式名称
+object:表示对象的名称，如表名或视图名等。
+@connect_identifier:表示数据库连接字段
+
+模式对象：
+	模式对象包括表、索引、视图、序列、和同义词。
+表：
+	表是用来存储用户数据的。
+	数据类型：
+创建表：
+create table table_name(
+column_name date_type [default expression ]
+) [tablespace tablespace_name]
+
+管理表中的列：
+
+增加列
+alter table table_name add column_name data_type;
+
+删除列
+alter table table_name drop column column_name;
+
+删除多行
+alter table table_name drop column (column_name , column_name , ......);
+
+修改列的名称
+alter table table_name rename column column_name to new_column_name;
+
+修改列的数据类型
+alter table table_name modify column_name new_data_type;
+
+重命名表
+alter table table_name rename to new_table_name
+
+删除表
+drop table table_name [cascade constraints][purge];
+参数说明：
+
+cascade constraints 指定删除表的同时，删除所有引用这个表的视图、约束、索引和触发器等。
+
+purge：
+表示删除该表后，立即释放该表所占用的资源空间。
+
+表的完整性约束
+约束分类：
+以约束作用域划分： 对表、对列
+以约束的用途划分：
+not null     非空约束，指定一列不为空。
+primary key  主键约束，主键由一列或一组列组成，唯一标识表中的一行。
+unique       唯一约束，指定一列或者一组列只能存储唯一值。
+check        检查约束，指定一列或一组列的值必须满足某种条件。
+foreign key  外键约束，指定表的外键。
+
+not null约束
+对已建立的表添加not null 约束 ：alter table table_name modify column_name [constraint constraint_name] not null;
+
+删除unique约束
+alter table table_name modify column_name null;
+
+unique约束
+添加：column_name data_type [constraint constraint_name] unique
+alter table table_name add [constraint constraint_name]
+删除：
+alter table table_name drop unique (column_name);
+
+primary key约束
+创建
+column_name data_type [ constraint constraint_name ] primary key
+alter table table_name add [ constraint constraint_name ] primary key (column_name);  
+删除
+alter table table_name drop constraint constraint_name;

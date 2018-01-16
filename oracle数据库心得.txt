@@ -44,7 +44,7 @@ object:表示对象的名称，如表名或视图名等。
 	数据类型：
 创建表：
 create table table_name(
-column_name date_type [default expression ]
+column_name data_type [default expression ]
 ) [tablespace tablespace_name]
 
 管理表中的列：
@@ -104,3 +104,20 @@ column_name data_type [ constraint constraint_name ] primary key
 alter table table_name add [ constraint constraint_name ] primary key (column_name);  
 删除
 alter table table_name drop constraint constraint_name;
+
+check约束
+column_name data_type [ constraint constraint_name ] check (check_condition); 
+alter table table_name add [constraint constraint_name] check check_condition;
+例句：alter table person add check (gender in ('male','famale'));
+
+foreign key约束
+column_name1 data_type [constraint constraint_name] references table_name (column_name2);
+alter table table_name1 add [constraint constraint_name ] foreign key (column_name1) references table_name2 (column_name2);
+注：引用表被成为“子表”，而被引用表被称为“父表”。
+
+指定级联操作类型：
+cascade   
+set null  
+no action 
+
+

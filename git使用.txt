@@ -100,4 +100,58 @@ stash@{Number}指定将某次stash的内容合并到本地代码中。
 
 　　git stash show -p stash@{0} 显示修改的详细内容
 
- 	
+移除文件：
+git rm 文件名  连带工作空间的文件删除
+git rm --cached file.txt 把文件从 Git 仓库中删除（不删除工作空间的文件）
+git rm --cached 文件夹 -r 把文件夹下的所有文件从仓库删除
+
+.gitignore文件的使用方法
+创建：touch .gitignore 
+编辑规则：
+
+配置语法：
+• 所有空行或者以 ＃ 开头的行都会被 Git 忽略。（如注释）
+• 可以使用标准的 glob 模式匹配。（glob是shell简化的正则表达式）
+• 匹配模式可以以（/）开头防止递归。
+• 匹配模式可以以（/）结尾指定目录。
+• 要忽略指定模式以外的文件或目录，可以在模式前加上惊叹号（!）取反。
+（除去……之外，这样的说法）
+
+实例：
+# 忽视所有结尾为 .a 的文件
+*.a
+# 但除了 lib.a的文件，即使你规定了结尾为.a的文件要忽略
+!lib.a  (不行就添加/)
+# only ignore the TODO file in the current directory, not subdir/TODO
+/TODO
+# 忽视文件夹build下的所有文件
+build/
+# 忽视doc/note.txt文件，但不回忽略 doc/server/arch.txt
+doc/*.txt
+# 忽略doc目录下的全部.pdf 文件 
+doc/**/*.pdf
+
+git lfs 使用：
+
+* git lfs checkout:
+    Populate working copy with real content from Git LFS files.
+* git lfs clone:
+    Efficiently clone a Git LFS-enabled repository.
+* git lfs fetch:
+    Download git LFS files from a remote.
+* git lfs install:
+    Install Git LFS configuration.
+* git lfs logs:
+    Show errors from the git-lfs command.
+* git lfs pull:
+    Fetch LFS changes from the remote & checkout any required working tree files.
+* git lfs push:
+    Push queued large files to the Git LFS endpoint.
+* git lfs track:
+    View or add Git LFS paths to Git attributes.
+
+具体的步骤：
+1.git lfs track *.jar(其他类似的文件，如视频，图片等)
+2.git add
+3.git commit
+4.git push 
